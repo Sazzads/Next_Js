@@ -2,5 +2,8 @@
     "css.lint.unknownAtRules": "ignore",
     "auto-rename-tag.activationOnLanguage": [
         "*"
-    ]
+    ],
+    "emmet.includeLanguages": {
+        "javascript": "javascriptreact"
+    }
 }
