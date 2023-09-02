@@ -3,7 +3,7 @@ import Modal from "@/Components/Modal";
 import ManageSingleProduct from "./ManageSingleProduct";
 import { useRef, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
-
+  
 
 const ManageProduct = ({ products }) => {
     const modalRef = useRef(null)
@@ -28,6 +28,7 @@ const ManageProduct = ({ products }) => {
         const price = form.price.value
         const data = { title, price }
         if (title && price) {
+            setloading(true)
             try {
                 const res = await fetch(`http://localhost:5000/products/${updatedata?.id}`, {
                     method: "PATCH",
@@ -43,12 +44,15 @@ const ManageProduct = ({ products }) => {
                 })
                 form.reset()
                 closeModal()
+                setloading(false)
             } catch (error) {
+                setloading(false)
                 console.log(error);
             }
         }
     }
     const handleDelete = async (id) => {
+        setloading(true)
         const res = await fetch(`http://localhost:5000/products/${id}`, {
             method: "DELETE"
         })
@@ -57,6 +61,7 @@ const ManageProduct = ({ products }) => {
         startTransition(() => {
             router.refresh()
         })
+        setloading(false)
 
     }
     return (
