@@ -35,6 +35,7 @@ const AllProducts = () => {
                     body: JSON.stringify(data)
                 })
                 const result = await res.json();
+                mutate()
                 console.log(result);
 
                 form.reset()
@@ -53,6 +54,7 @@ const AllProducts = () => {
         })
         const result = await res.json();
         console.log(result);
+        mutate()
     }
     return (
         <div>
