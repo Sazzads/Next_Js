@@ -7,7 +7,7 @@ const SingleCategory = ({ category }) => {
         <Link 
         href={`/products?categoryId=${id}`}
         >
-            <h1>{name}</h1>
+            <h1 className='border-2 p-2 border-black shadow-stone-700 shadow-sm hover:bg-slate-500'>{name}</h1>
         </Link>
     );
 };
